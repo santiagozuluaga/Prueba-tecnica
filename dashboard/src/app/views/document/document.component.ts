@@ -84,7 +84,7 @@ export class DocumentComponent {
         next: (response) => {
           this.isUpdatingDocument = false;
           this.snackBar.open(
-            "Document updated successfully.",
+            response.message,
             "Close"
           )
           setTimeout(
