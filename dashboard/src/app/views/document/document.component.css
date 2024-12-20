@@ -1,0 +1,22 @@
+.document-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.document-header-title {
+    display: flex;
+    align-items: center;
+
+    button {
+        margin-right: 8px;
+    }
+}
+
+.document-header-actions {
+    button {
+        margin-left: 8px;
+    }
+}

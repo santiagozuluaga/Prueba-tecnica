@@ -1,0 +1,95 @@
+<div>
+    <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="documentGroup" label="Select document">
+            <h3>Document information</h3>
+            <form [formGroup]="documentGroup" class="create-document-form">
+                <div class="form-inputs-container">
+                    @if (action === "create") {
+                        <mat-form-field class="form-input" appearance="outline">
+                            <mat-label>Type the document URL</mat-label>
+                            <input formControlName="documentURL" matInput placeholder="Type here" required>
+                        </mat-form-field>
+                    }
+                    <mat-form-field class="form-input" appearance="outline">
+                        <mat-label>Type the document name</mat-label>
+                        <input formControlName="documentName" matInput placeholder="Type here" required>
+                    </mat-form-field>
+                    <mat-form-field class="form-input" appearance="outline">
+                        <mat-label>Type the external id (Optional)</mat-label>
+                        <input formControlName="documentExternalId" matInput placeholder="Type here">
+                    </mat-form-field>
+                </div>
+                <div class="form-buttons-container">
+                    <button mat-flat-button matStepperNext>Continue</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="signersGroup" label="Add signers">
+            <h3>Add signers (Minimum 1 signer and maximum 3 signers)</h3>
+            <form [formGroup]="signersGroup" class="create-document-form">
+            <div formArrayName="signers">
+                @for (item of signers.controls; track $index) {
+                    <div [formGroupName]="$index">
+                        <div class="form-signers-header">
+                            <h4>Signer {{$index + 1}}</h4>
+                            <button mat-button (click)="removeSigner($index)">Remove signer</button>
+                        </div>
+                        <div class="form-inputs-container">
+                            <mat-form-field class="form-input" appearance="outline">
+                                <mat-label>Type the signer name</mat-label>
+                                <input formControlName="signerName" matInput placeholder="Type here" required>
+                            </mat-form-field>
+                            <mat-form-field class="form-input" appearance="outline">
+                                <mat-label>Type the signer email</mat-label>
+                                <input formControlName="signerEmail" matInput placeholder="Type here" required>
+                            </mat-form-field>
+                            <mat-form-field class="form-input" appearance="outline">
+                                <mat-label>Type the external id (Optional)</mat-label>
+                                <input formControlName="signerExternalId" matInput placeholder="Type here">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                }
+                <button mat-button (click)="addSigner()">Add signer</button>
+            </div>
+            <div class="form-buttons-container">
+                <button mat-flat-button matStepperPrevious>Previous</button>
+                <button mat-flat-button matStepperNext>Continue</button>
+            </div>
+            </form>
+        </mat-step>
+        <mat-step label="Confirm">
+            <h3>Confirm document creation</h3>
+            <div>
+                <div>
+                    <h4>Document</h4>
+                    <div>
+                        Document name: {{documentGroup.value.documentName}}
+                    </div>
+                </div>
+                <div>
+                    <h4>Signers</h4>
+                    <div>
+                        @for (signer of signers.value; track $index) {
+                            <h5>Signer {{$index + 1}}</h5>
+                            <div>
+                                <div>Signer name: {{signer.signerName}}</div>
+                                <div>Signer email: {{signer.signerEmail}}</div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="form-buttons-container">
+                <button mat-flat-button matStepperPrevious>Previous</button>
+                <button mat-flat-button (click)="submit()">
+                    @if (action === "create") {
+                        <h3>Create document</h3>    
+                    } @else {
+                        <h3>Update document</h3>
+                    }
+                </button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>

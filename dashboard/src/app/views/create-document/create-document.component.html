@@ -1,0 +1,14 @@
+<div class="create-document-container">
+    <div class="create-document-header">
+        <button mat-button color="primary" routerLink="/documents">
+            <mat-icon>arrow_back</mat-icon>
+            Documents
+        </button>
+        <h2>New document</h2>
+    </div>
+
+    <app-form-document
+        [action]="action"
+        (submitForm)="submit($event)"
+    ></app-form-document>
+</div>

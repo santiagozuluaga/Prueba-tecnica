@@ -1,0 +1,23 @@
+[
+    {
+        "model": "application.document",
+        "pk": 1,
+        "fields": {
+            "open_id": 1,
+            "token": "d0defd8a-1901-40fb-ab4b-bd564c8bb8d1",
+            "name": "Probando zapsign",
+            "status": "pending",
+            "external_id": ""
+        }
+    }, {
+        "model": "application.document",
+        "pk": 2,
+        "fields": {
+            "open_id": 2,
+            "token": "c211187c-1afc-4d65-b256-874c298367d5",
+            "name": "Probando zapsign",
+            "status": "pending",
+            "external_id": ""
+        }
+    }
+]

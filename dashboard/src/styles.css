@@ -1,0 +1,16 @@
+:root {
+    color-scheme: light;
+
+    .mat-mdc-button-base {
+        border-radius: 4px;
+    }
+
+    .app-root {
+        padding: 24px;
+        max-width: 892px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

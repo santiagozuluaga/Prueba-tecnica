@@ -1,0 +1,10 @@
+.documents-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.mat-column-status {
+    text-transform: capitalize;
+}

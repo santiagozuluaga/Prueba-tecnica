@@ -1,0 +1,9 @@
+.create-document-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.create-document-header button {
+    margin-right: 8px;
+}
