@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from shared.env import getEnvArrayString, getEnvBool
+from shared.env import getEnvArrayString, getEnvBool, getEnvString
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,13 +83,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+DATABASE_NAME = getEnvString("DATABASE_NAME", "")
+DATABASE_USER = getEnvString("DATABASE_USER", "")
+DATABASE_PASSWORD = getEnvString("DATABASE_PASSWORD", "")
+DATABASE_HOST = getEnvString("DATABASE_HOST", "")
+DATABASE_PORT = getEnvString("DATABASE_PORT", "")
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': DATABASE_PORT,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
